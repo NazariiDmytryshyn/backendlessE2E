@@ -9,7 +9,6 @@ module.exports = defineConfig({
     viewportWidth: 1280,
     projectId: "thrjkc",
     e2e: {
-        specPattern: '**/*.**.*',
         baseUrl: 'https://stage.backendless.com',
         chromeWebSecurity: false,
         setupNodeEvents(on, config) {

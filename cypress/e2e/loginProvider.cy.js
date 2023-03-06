@@ -1,8 +1,9 @@
-describe('Login with Amazon', () => {
+describe('Login Providers', () => {
     beforeEach(() => {
         cy.visit('https://stoutdoctor-stage.backendless.app/');
+        cy.clearCookies()
     })
-    it('should log in successfully', () => {
+    it('Login with Amazon', () => {
         // Click the Amazon login button
         cy.contains('span', 'Amazon').click();
 

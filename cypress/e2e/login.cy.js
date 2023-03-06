@@ -48,7 +48,7 @@ describe('UI/Func Login/Recovery/Restore page', () => {
     it('Login possitive', () => {
         cy.url().should('include', '/login');
 
-        cy.get('input[type=\'email\']').should('exist').type('bob@bob.com');
+        cy.get('input[type=\'email\']').should('exist').type('nazarter98@gmail.com');
         cy.get('input[type=\'password\']').type('111111').should('exist');
         cy.get('button[type=\'submit\']').should('exist').click();
 
@@ -116,7 +116,7 @@ describe('UI/Func Login/Recovery/Restore page', () => {
 
         cy.url().should('include', '/restore-password');
 
-        cy.get('input[type=\'email\']').type('bob@bob.com');
+        cy.get('input[type=\'email\']').type('nazarter98@gmail.com');
         cy.contains('button', 'Send email').should('exist').click();
 
         cy.contains('p', 'We sent an email with a link to change password to your email address.').should('exist');
@@ -124,7 +124,7 @@ describe('UI/Func Login/Recovery/Restore page', () => {
     })
 
     it('Resend Confirmation Email success', () => {
-        cy.get('input[type=\'email\']').type('bob@bob.com')
+        cy.get('input[type=\'email\']').type('nazarter98@gmail.com')
 
         cy.contains('button', 'Resend Confirmation Email').should('exist').click();
 
