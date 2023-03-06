@@ -6,15 +6,29 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "cypress:open": "cypress open",
-        "cypress:run": "cypress run"
+        "cypress:run": "cypress run",
+        "cy:run": "cypress run",
+        "cy:report": "marge --reportDir cypress/mochawesome-report --html false --json false --showSkipped true --showHooks failed",
+        "cy:merge": "mochawesome-merge cypress/mochawesome-report/*.json > cypress/mochawesome-report/mochawesome.json",
+        "cy:generate-report": "marge --reportDir cypress/mochawesome-report --reportTitle 'Cypress E2E Report' --reportFilename index --showSkipped true --showHooks failed cypress/mochawesome-report/mochawesome.json"
     },
     "author": "Nazar Dmytryshyn",
     "license": "ISC",
     "devDependencies": {
+        "@cypress/webpack-preprocessor": "^5.17.0",
         "chance": "^1.1.11",
         "cypress": "^12.7.0",
+        "cypress-mailosaur": "^2.13.0",
         "jsonwebtoken": "^9.0.0",
-        "typescript": "^4.4.4",
-        "@cypress/webpack-preprocessor": "^5.17.0"
+        "mailosaur": "^8.5.0",
+        "mocha": "^9.2.0",
+        "mochawesome": "^6.3.0",
+        "mochawesome-merge": "^4.2.0",
+        "mochawesome-report-generator": "^5.2.0",
+        "typescript": "^4.4.4"
+    },
+    "dependencies": {
+        "cypress-mysql": "^1.0.0",
+        "mysql2": "^3.2.0"
     }
 }

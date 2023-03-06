@@ -15,7 +15,7 @@
 
 // Import commands.js using ES2015 syntax:
 import './commands'
-
+import 'cypress-mailosaur'
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
 Cypress.on('uncaught:exception', (err, runnable) => {
@@ -23,3 +23,5 @@ Cypress.on('uncaught:exception', (err, runnable) => {
     // failing the test
     return false
 })
+const mysql = require('cypress-mysql');
+mysql.addCommands();

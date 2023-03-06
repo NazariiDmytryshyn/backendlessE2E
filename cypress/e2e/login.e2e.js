@@ -5,7 +5,6 @@ describe('UI/Func Login/Recovery/Restore page', () => {
         cy.visit('/')
     })
     it('Login page UI', () => {
-        cy.visit('/')
 
         cy.get('div').should('have.class', 'product-logo product-logo-block');
         cy.contains('span', 'Sign in').should('exist');
