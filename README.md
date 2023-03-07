@@ -5,7 +5,7 @@
 1. Download and install the Latest LTS Version of Node.js.
 2. Run following command
 ```
-npm run build
+npm install --save-dev
 ```
 
 ## Start
