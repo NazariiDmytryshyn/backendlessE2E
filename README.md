@@ -20,4 +20,4 @@ npx cypress open
 ```
 
 ## Configure
-###! You should rename 'authDataEx.js' to 'authData.js' and add your auth data in 'authData.js' file for Login Providers
+##! You should rename 'authDataEx.js' to 'authData.js' and add your auth data in 'authData.js' file for Login Providers
