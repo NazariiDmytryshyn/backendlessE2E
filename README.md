@@ -14,7 +14,7 @@ npm install --save-dev
 npx cypress run
 ```
 
-2. If you want run Cypress interface run
+2. If you want open Cypress interface run
 ```
 npx cypress open
 ```
