@@ -4,17 +4,41 @@ const { defineConfig } = require("cypress");
 module.exports = defineConfig({
     env: {
         MAILOSAUR_API_KEY: "00aFft9D0JHFaMhJ",
-        "GOOGLE_CLIENT_ID": "16227205146-08sr44d68eetj2fl0vkssheu6331j34u.apps.googleusercontent.com",
-        "GOOGLE_CLIENT_SECRET": "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",
+        "db": {
+            "host": "localhost",
+            "user": "root",
+            "password": "rootpassword"
+        },
     },
     defaultCommandTimeout: 10000,
     viewportWidth: 1280,
     projectId: "thrjkc",
     e2e: {
-        baseUrl: 'https://stage.backendless.com',
+        baseUrl: "https://stage.backendless.com",
         chromeWebSecurity: false,
         setupNodeEvents(on, config) {
-            // implement node event listeners here
+            on("task", {
+                queryDb: (query) => {
+                    return queryTestDb(query, config);
+                },
+            });
         },
     }
 })
+
+const mysql = require("mysql");
+
+function queryTestDb(query, config) {
+    const connection = mysql.createConnection(config.env.db);
+    connection.connect();
+    return new Promise((resolve, reject) => {
+        connection.query(query, (error, results) => {
+            if (error) {
+                reject(error);
+            } else {
+                connection.end();
+                return resolve(results);
+            }
+        });
+    });
+}

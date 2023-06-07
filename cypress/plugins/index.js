@@ -1,15 +1,22 @@
+const { result } = require('cypress/types/lodash');
 const Mailosaur = require('mailosaur');
 
 module.exports = (on, config) => {
-    const mailosaurApiKey = Cypress.env('00aFft9D0JHFaMhJ');
-    const mailosaurServerId = Cypress.env('oz4gw8rb');
+    const mysql = require('mysql')
 
-    on('task', {
-        async getEmail(messageSubject) {
-            const client = new Mailosaur(mailosaurApiKey);
-            const messages = await client.messages.list(mailosaurServerId);
-            const message = messages.items.find((item) => item.subject === messageSubject);
-            return message;
-        },
-    });
+    function queryTestDb(query, config) {
+        const connection = mysql.createConnection(config.env.db)
+        connection.connect()
+        return new Promise((resolve, reject) => {
+            connection.query(query, (error, results) => {
+                if (error) {
+                    reject(error)
+                } else {
+                    connection.end()
+                    return resolve(results)
+                }
+            })
+        })
+    }
+    on('task', { queryDb: query => { return queryTestDb(query, config) }, });
 };
